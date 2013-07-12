@@ -48,7 +48,7 @@ class Word_Table {
      * init the connection
      */
     private function init(){
-        $config = $this->getConfigFile(PUBLIC_DIR.'/lib/database.json');
+        $config = $this->getConfigFile(/*PUBLIC_DIR.*/'./lib/database.json');
 
         // Create connection
         $connection = mysqli_connect($config["host"],$config["username"],$config["password"],$config["dbname"]);
