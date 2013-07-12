@@ -13,18 +13,19 @@ foreach($arr_res as $word)
 {
     $responce = $rhyme->getRhymes($word);
     if(startsWith($responce)){
-        echo "error " . ++$errors . substr($responce, 0, 20) . "\r\n";
-        sleep(1);
-        continue;
-    } else {
         $words->insertRhyme($word,$responce);
         $ofset++;
         echo $ofset  . substr($responce, 0, 20) ."\r\n";
+    } else {
+        echo "error " . ++$errors . substr($responce, 0, 20) . "\r\n";
+//        echo $responce; exit;
+        sleep(1);
+        continue;
     }
 
 }
 
-function startsWith($haystack, $needle = "<")
+function startsWith($haystack, $needle = "[")
 {
     return !strncmp($haystack, $needle, strlen($needle));
 }
