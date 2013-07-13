@@ -12,7 +12,7 @@ class Helper
         file_put_contents("./lib/offset", $offset) . "\r\n";
     }
     public static function  getOffset(){
-        return file_get_contents("./lib/offset");
+        return intval(file_get_contents("./lib/offset"));
     }
     public static function startsWith($haystack, $needle = "[")
     {

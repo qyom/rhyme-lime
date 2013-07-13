@@ -1,6 +1,6 @@
 <?php
 
-define('OFFSET_UPPER_BOUND', 2);
+define('OFFSET_UPPER_BOUND', 500);
 
 require_once("./lib/Curl.php");
 require_once("./lib/Helper.php");
@@ -11,7 +11,7 @@ $synonym    = new Get_Synonyms();
 $words      = new Word_Table();
 $offset     = Helper::getOffset();
 while($offset < OFFSET_UPPER_BOUND){
-    $arr_res =  $words->getWords($offset,2);
+    $arr_res =  $words->getWords($offset,100);
     foreach($arr_res as $word){
         $response = $synonym->getSynonyms($word["word"]);
         $words->insertSynonym($word["id"],$response);
