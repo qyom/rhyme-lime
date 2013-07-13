@@ -1,17 +1,18 @@
 <?php
-//defined('PUBLIC_DIR') or define('PUBLIC_DIR', dirname(__FILE__));
-define('OFFSET_UPPER_BOUND', 30);
+define('OFFSET_UPPER_BOUND', 2);
 
-require_once(/*PUBLIC_DIR.*/"./lib/Get_Rhymebrain.php");
-require_once (/*PUBLIC_DIR.*/"./lib/Word_Table.php");
+require_once("./lib/Helper.php");
+require_once("./lib/Curl.php");
+require_once("./lib/Get_Rhymebrain.php");
+require_once ("./lib/Word_Table.php");
 
-$rhyme = new Get_Rhymebrain();
-$words = new Word_Table();
-$offset = file_get_contents("./lib/offset");
+$rhyme  = new Get_Rhymebrain();
+$words  = new Word_Table();
+$offset = Helper::getOffset();
 $errors = 0;
 
 while($offset < OFFSET_UPPER_BOUND){
-    $arr_res =  $words->getWord($offset,10);
+    $arr_res =  $words->getWord(0,2);
     handleWords($arr_res);
     echo "while($offset < OFFSET_UPPER_BOUND) " . $offset . "\r\n";
 }
@@ -27,30 +28,14 @@ function handleWords($arr_res){
         $response = $rhyme->getRhymes($word);
 
         // while the response is an error, keep sending the request with the same word
-        while(!startsWith($response)){
+        while(!Helper::startsWith($response)){
             echo "error " . "WORD : " . $word . " " . ++$errors . " " . substr($response, 0, 20) . "\r\n";
-//        echo $response; exit;
             sleep(1);
             $response = $rhyme->getRhymes($word);
         }
         $words->insertRhyme($word,$response);
         echo $offset . " WORD : " . $word . substr($response, 0, 20) ."\r\n";
-        incrementOffset();
+        Helper::setOffset($offset++);
     }
 }
 
-
-function incrementOffset(){
-    global $offset;
-    $offset = intval(file_get_contents("./lib/offset"));
-//    echo "offset : before " . $offset . "\r\n";
-    $offset = $offset + 1;
-//    echo "offset : after " . $offset . "\r\n";
-    file_put_contents("./lib/offset", $offset) . "\r\n";
-    echo "offset written : " . file_get_contents("./lib/offset") . "\r\n";
-}
-
-function startsWith($haystack, $needle = "[")
-{
-    return !strncmp($haystack, $needle, strlen($needle));
-}

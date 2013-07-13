@@ -35,6 +35,20 @@ class Word_Table {
         }
         return $result;
     }
+
+    public function getWords($offset , $limit = null){
+
+        $query = "SELECT id,word FROM  `rhymes` LIMIT " . $offset . " , " . (($limit == null) ? self::GET_WORD_LIMIT : $limit);
+
+        $response = mysqli_query(self::$connection ,$query) or die (mysqli_error(self::$connection));
+
+        $result = array();
+        while ($row = $response->fetch_assoc()) {
+            $result[] = $row;
+        }
+        return $result;
+    }
+
     public function insertRhyme($word,$str_json){
         $sql = sprintf(
             "INSERT INTO rhymes (word,json) VALUES ('%s','%s')",
@@ -44,6 +58,14 @@ class Word_Table {
         $response = mysqli_query(self::$connection ,$sql) or die (mysqli_error(self::$connection));
     }
 
+    public function insertSynonym($word_id,$str_json){
+        $sql = sprintf(
+            "INSERT INTO synonyms (word_id,json) VALUES ('%s','%s')",
+            mysql_real_escape_string($word_id),
+            mysql_real_escape_string($str_json)
+        );
+        $response = mysqli_query(self::$connection ,$sql) or die (mysqli_error(self::$connection));
+    }
     /**
      * init the connection
      */
