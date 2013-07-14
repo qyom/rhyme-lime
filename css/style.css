@@ -119,15 +119,11 @@ h1.header a img{
     background: url("../images/line.png") left top repeat-y;
 }
 .content textarea{
-    padding-left: 97px;
     line-height: 21px;
     vertical-align: bottom;
     font-size: 12px;
-    height: 576px;
-    width: 435px;
     background: none;
     border: 0;
-    padding-top: 5px;
     display: block;
 }
 .content textarea:focus{
@@ -192,7 +188,7 @@ h1.header a img{
     color: #888888;
 }
 .highlight {
-    border-radius: 0.5em;
+    border-radius: 5px;
     padding: 0 3px;
     margin: 0 -3px;
 }
