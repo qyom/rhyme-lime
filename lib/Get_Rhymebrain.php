@@ -1,4 +1,6 @@
 <?php
+require_once("./lib/Curl.php");
+
     class Get_Rhymebrain extends Curl
     {
         const URL = "http://rhymebrain.com/talk?function=getRhymes&word=";
@@ -6,4 +8,3 @@
             return $this->getResponse(Get_Rhymebrain::URL.$word);
         }
     }
-?>

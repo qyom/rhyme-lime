@@ -7,6 +7,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
+/**
+ * TODO
+ * this class needs to be refactored
+ */
 class Word_Table {
 
     const GET_WORD_LIMIT = "20";
@@ -51,7 +56,7 @@ class Word_Table {
 
     public function insertRhyme($word,$str_json){
         $sql = sprintf(
-            "INSERT INTO rhymes (word,json) VALUES ('%s','%s')",
+            "INSERT INTO synonyms (word_id,json) VALUES ('%s','%s')",
             mysql_real_escape_string($word),
             mysql_real_escape_string($str_json)
         );
@@ -66,6 +71,22 @@ class Word_Table {
         );
         $response = mysqli_query(self::$connection ,$sql) or die (mysqli_error(self::$connection));
     }
+
+    /**
+     * gets the appropriate rhyme to the word
+     * @param $word
+     * @return array
+     */
+    public function getRhyme($word){
+        $query = sprintf(
+            "SELECT json FROM rhymes WHERE word = '%s'",
+            mysql_real_escape_string($word)
+        );
+
+        $response = mysqli_query(self::$connection ,$query) or die (mysqli_error(self::$connection));
+        return $response->fetch_assoc();
+    }
+
     /**
      * init the connection
      */
