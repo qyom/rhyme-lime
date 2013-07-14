@@ -1,0 +1,177 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.clearfix:after {
+    content: " "; /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+body{
+    background: url("../images/wood-background.jpg");
+    font-family: "Trebuchet MS", "Lucida Grande", "Arial"  sans-serif;
+}
+.header-block{
+    max-width: 1300px;
+    margin: 0px auto;
+}
+
+h1.header{
+    padding: 0px 10px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    background: url("../images/pencil.png") center center no-repeat;
+
+}
+h1.header a img{
+    width: 290px;
+    height: 161px;
+}
+.main-block{
+ width: 1060px;
+ margin: 0px auto;
+}
+.left-block,.right-block{
+    position: relative;
+}
+.left-block{
+
+}
+.right-block{
+    background: url("../images/ipad.png") left top no-repeat;
+    width: 398px ;
+    height: 554px;
+    margin-top: 65px;
+    padding: 79px 0px 0px 50px;
+}
+.editor{
+    background: url("../images/editor-bg.png") left top no-repeat;
+    width: 576px;
+    height: 628px;
+    padding: 126px 0px 0px 30px;
+    position:relative;
+}
+.spirales{
+    position: absolute;
+    width: 90px;
+    height: 697px;
+    left: 17px;
+    top: 55px;
+    background: url("../images/spirals.png") left top no-repeat;
+}
+.editor-content{
+    width: 534px;
+    height: 583px;
+}
+.content{
+    min-height: 578px;
+    background: url("../images/line.png") left top repeat-y;
+    padding-left: 97px;
+    padding-right: 10px;
+    line-height: 21px;
+    vertical-align: bottom;
+    font-size: 12px;
+    padding-top: 5px;
+}
+.sugestion{
+    width: 341px;
+    height: 429px;
+    background: #000;
+}
+.sugestion-header{
+    background: #fff;
+    width: 331px;
+    padding: 5px;
+    color: #888;
+    font-size: 12px;
+}
+.main-word{
+    font-size: 18px;
+    font-weight: bold;
+    padding-right:5px;
+    color: #000;
+}
+.left{
+    float:left;
+}
+.right{
+    float:right;
+}
+.editor-content,.sugestion{
+    overflow-y: auto;
+    overflow-x:hidden ;
+}
+.line{
+    border-bottom: solid 1px #eee;
+    padding: 5px 0px;
+}
+.line span{
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 5px;
+    width: 103px;
+    display: inline-block;
+    cursor: pointer;
+}
+.green{
+    color: #0b960b;
+}
+.blue{
+    color: #1c8bc4;
+}
+.orange{
+    color: #ff7e00;
+}
+.red{
+
+    color: #ff0000;
+}
+.gray{
+    color: #888888;
+}
