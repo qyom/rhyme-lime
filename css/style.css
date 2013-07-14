@@ -122,6 +122,7 @@ h1.header a img{
 .sugestion{
     width: 341px;
     height: 429px;
+    background: #000;
 }
 .sugestion-header{
     background: #fff;
@@ -156,19 +157,21 @@ h1.header a img{
     padding-left: 5px;
     width: 103px;
     display: inline-block;
+    cursor: pointer;
 }
 .green{
-    background-color: rgba(11, 150, 11, 0.8);
+    color: #0b960b;
 }
 .blue{
-    background-color: rgba(28, 139, 196, 0.8);
+    color: #1c8bc4;
 }
 .orange{
-    background-color: rgba(255, 126, 0, 0.8);
+    color: #ff7e00;
 }
 .red{
-    background-color: rgba(255, 0, 0, 0.8);
+
+    color: #ff0000;
 }
 .gray{
-    background-color: rgba(136, 136, 136, 0.8);
+    color: #888888;
 }
