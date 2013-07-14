@@ -15,7 +15,7 @@ $(document).ready(function() {
         if(GLOBAL_WORDS.hasOwnProperty(cur_word)){
             sugestionAlert(GLOBAL_WORDS[cur_word]);
         }else{
-            $.getJSON("http://rhymeline.net", {word: cur_word}, function(json) {
+            $.getJSON("http://rhymeline.net/index.php", {word: cur_word}, function(json) {
                 if(json.success){
                 //console.log(json);
                     GLOBAL_WORDS[cur_word] = json;
