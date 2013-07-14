@@ -110,14 +110,24 @@ h1.header a img{
     height: 583px;
 }
 .content{
-    min-height: 578px;
+    height: 583px;
     background: url("../images/line.png") left top repeat-y;
+}
+.content textarea{
     padding-left: 97px;
-    padding-right: 10px;
     line-height: 21px;
     vertical-align: bottom;
     font-size: 12px;
+    height: 576px;
+    width: 435px;
+    background: none;
+    border: 0;
     padding-top: 5px;
+    display: block;
+}
+.content textarea:focus{
+    border: 0;
+    outline: none;
 }
 .sugestion{
     width: 341px;
@@ -143,7 +153,7 @@ h1.header a img{
 .right{
     float:right;
 }
-.editor-content,.sugestion{
+.sugestion{
     overflow-y: auto;
     overflow-x:hidden ;
 }
