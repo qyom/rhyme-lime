@@ -3,8 +3,47 @@ div#rdio {
    height: 114px;
    float:left;
 
-    margin-left: 50px;
-    margin-top: -30px;
+   margin-left: 50px;
+   margin-top: -30px;
 
    background: url(/images/rdio/player.png);
+
+    position: relative;
+}
+
+div#rdio .navigation {
+    width: 15px;
+    height: 10px;
+    position: absolute;
+    top: 35px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+}
+
+div#rdio .prev {
+    left: 135px;
+    background: url(/images/rdio/previous.png);
+}
+div#rdio .play {
+    left: 200px;
+    background: url(/images/rdio/play.png);
+    width: 11px;
+}
+div#rdio .pause {
+    left: 200px;
+    width:7px;
+    background: url(/images/rdio/pause.png);
+    display: none;
+}
+div#rdio .next {
+    left: 265px;
+    background: url(/images/rdio/next.png);
+}
+div#rdio .info {
+    width: 155px;
+    height: 18px;
+    position: absolute;
+    top: 53px;
+    left: 130px;
+    color: #FFF;
 }
