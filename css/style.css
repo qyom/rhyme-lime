@@ -55,6 +55,7 @@ table {
 }
 body{
     background: url("../images/wood-background.jpg");
+    font-family: "Trebuchet MS", "Lucida Grande", "Arial"  sans-serif;
 }
 .header-block{
     max-width: 1300px;
@@ -84,9 +85,10 @@ h1.header a img{
 }
 .right-block{
     background: url("../images/ipad.png") left top no-repeat;
-    width: 448px ;
-    height: 633px;
+    width: 398px ;
+    height: 554px;
     margin-top: 65px;
+    padding: 79px 0px 0px 50px;
 }
 .editor{
     background: url("../images/editor-bg.png") left top no-repeat;
@@ -104,23 +106,69 @@ h1.header a img{
     background: url("../images/spirals.png") left top no-repeat;
 }
 .editor-content{
-    overflow-y: auto;
-    overflow-x:hidden ;
     width: 534px;
     height: 583px;
 }
 .content{
-    min-height: 582px;
+    min-height: 578px;
     background: url("../images/line.png") left top repeat-y;
     padding-left: 97px;
     padding-right: 10px;
     line-height: 21px;
     vertical-align: bottom;
-    font-size: 14px;
+    font-size: 12px;
+    padding-top: 5px;
+}
+.sugestion{
+    width: 341px;
+    height: 429px;
+}
+.sugestion-header{
+    background: #fff;
+    width: 331px;
+    padding: 5px;
+    color: #888;
+    font-size: 12px;
+}
+.main-word{
+    font-size: 18px;
+    font-weight: bold;
+    padding-right:5px;
+    color: #000;
 }
 .left{
     float:left;
 }
 .right{
     float:right;
+}
+.editor-content,.sugestion{
+    overflow-y: auto;
+    overflow-x:hidden ;
+}
+.line{
+    border-bottom: solid 1px #eee;
+    padding: 5px 0px;
+}
+.line span{
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 5px;
+    width: 103px;
+    display: inline-block;
+}
+.green{
+    background-color: rgba(11, 150, 11, 0.8);
+}
+.blue{
+    background-color: rgba(28, 139, 196, 0.8);
+}
+.orange{
+    background-color: rgba(255, 126, 0, 0.8);
+}
+.red{
+    background-color: rgba(255, 0, 0, 0.8);
+}
+.gray{
+    background-color: rgba(136, 136, 136, 0.8);
 }
