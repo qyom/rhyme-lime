@@ -88,6 +88,21 @@ class Word_Table {
     }
 
     /**
+     * gets the appropriate Synonym to the word
+     * @param $word
+     * @return array
+     */
+    public function getSynonym($word){
+        $query = sprintf(
+            "SELECT json FROM rhymes WHERE word = '%s'",
+            mysql_real_escape_string($word)
+        );
+
+        $response = mysqli_query(self::$connection ,$query) or die (mysqli_error(self::$connection));
+        return $response->fetch_assoc();
+    }
+
+    /**
      * init the connection
      */
     private function init(){
@@ -106,4 +121,32 @@ class Word_Table {
         return $json;
     }
 
+    public function getAll()
+    {
+        $query = "SELECT word FROM rhymes WHERE 1";
+
+        $response = mysqli_query(self::$connection ,$query) or die (mysqli_error(self::$connection));
+
+        $result = array();
+        while ($row = $response->fetch_assoc()) {
+            $result[] = $row;
+        }
+        return $result;
+    }
+
+    public function insertRow($word)
+    {
+        $word = mysql_real_escape_string(trim($word));
+        $query = "SELECT R.word, R.json rhyme, S.json synonym FROM `rhymes` R LEFT JOIN `synonyms` S ON R.id = S.word_id WHERE R.word = '" . $word . "'";
+
+        $response = mysqli_query(self::$connection ,$query) or die ("In SELECT : " . mysqli_error(self::$connection));
+        $response = $response->fetch_assoc();
+
+        $query = sprintf(
+            "INSERT INTO `word`(`word`, `rhyme`, `synonym`) VALUES ('%s', '%s', '%s')",
+            mysql_real_escape_string(trim($response['word'])),
+            mysql_real_escape_string(trim($response['rhyme'])),
+            mysql_real_escape_string(trim($response['synonym'])));
+        mysqli_query(self::$connection ,$query) or die ("In Insert : " . mysqli_error(self::$connection));
+    }
 }
