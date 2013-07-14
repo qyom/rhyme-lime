@@ -9,5 +9,5 @@
 
 abstract class Rhymer_Abstract {
 
-    abstract function rhyme();
+    abstract function rhyme($word);
 }

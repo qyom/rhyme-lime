@@ -16,9 +16,13 @@ class Handler {
             $rhyme = Rhyme_Service::getRhyme();
             // some check here
             // and
-            $word = "stuck";
+            $word = "";
+            if(isset($_GET["word"])){
+                $word = $_GET["word"];
+            }
             $response = $rhyme->rhyme($word);
-            var_dump($response);
+            echo $response; exit;
+//            var_dump($response);
         }
     }
 }
