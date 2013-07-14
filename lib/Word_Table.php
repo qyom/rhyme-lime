@@ -77,14 +77,31 @@ class Word_Table {
      * @param $word
      * @return array
      */
-    public function getRhyme($word){
+    public function getWordInfo($word){
         $query = sprintf(
-            "SELECT json FROM rhymes WHERE word = '%s'",
+            "SELECT * FROM word_list WHERE word = '%s'",
             mysql_real_escape_string($word)
         );
 
         $response = mysqli_query(self::$connection ,$query) or die (mysqli_error(self::$connection));
         return $response->fetch_assoc();
+    }
+
+    /**
+     * gets the appropriate rhyme to the word
+     * @param $info
+     * @internal param $word
+     * @return array
+     */
+    public function setWordInfo($info){
+        $sql = sprintf(
+            "INSERT INTO word_list (word,rhyme, synonym) VALUES ('%s','%s', '%s')",
+            mysql_real_escape_string($info["word"]),
+            mysql_real_escape_string($info["rhyme"]),
+            mysql_real_escape_string($info["synonym"])
+        );
+        $response = mysqli_query(self::$connection ,$sql) or die (mysqli_error(self::$connection));
+        echo $response;
     }
 
     /**
@@ -119,34 +136,5 @@ class Word_Table {
         $json = json_decode($data, TRUE);
 
         return $json;
-    }
-
-    public function getAll()
-    {
-        $query = "SELECT word FROM rhymes WHERE 1";
-
-        $response = mysqli_query(self::$connection ,$query) or die (mysqli_error(self::$connection));
-
-        $result = array();
-        while ($row = $response->fetch_assoc()) {
-            $result[] = $row;
-        }
-        return $result;
-    }
-
-    public function insertRow($word)
-    {
-        $word = mysql_real_escape_string(trim($word));
-        $query = "SELECT R.word, R.json rhyme, S.json synonym FROM `rhymes` R LEFT JOIN `synonyms` S ON R.id = S.word_id WHERE R.word = '" . $word . "'";
-
-        $response = mysqli_query(self::$connection ,$query) or die ("In SELECT : " . mysqli_error(self::$connection));
-        $response = $response->fetch_assoc();
-
-        $query = sprintf(
-            "INSERT INTO `word`(`word`, `rhyme`, `synonym`) VALUES ('%s', '%s', '%s')",
-            mysql_real_escape_string(trim($response['word'])),
-            mysql_real_escape_string(trim($response['rhyme'])),
-            mysql_real_escape_string(trim($response['synonym'])));
-        mysqli_query(self::$connection ,$query) or die ("In Insert : " . mysqli_error(self::$connection));
     }
 }

@@ -10,21 +10,38 @@
 require_once("./abstract/Rhymer_Abstract.php");
 require_once ("./lib/Word_Table.php");
 require_once("./lib/Get_Rhymebrain.php");
+require_once("./lib/Get_Synonyms.php");
 
 class Rhyme extends Rhymer_Abstract {
 
-    function rhyme()
+    function rhyme($word)
     {
+
+//        $word = "stuck";
+
         $table = new Word_Table;
-        $rhyme  = new Get_Rhymebrain();
+        $rhyme = new Get_Rhymebrain();
+        $synonym = new Get_Synonyms();
+
 
         // check the cache
-        $rhymeJson = $table->getRhyme("fuck");
+        $rhymeJson = $table->getWordInfo($word);
         if(!($rhymeJson === null)){
-            return $rhymeJson["json"];
+            return $rhymeJson;
         }
 
         // if absent, get from api
-        return $rhyme->getRhymes("fuck");
+        $info = array();
+        $info["word"] = $word;
+        $info["rhyme"] = $rhyme->getRhymes($word);
+
+        // while the answer is error , keep requesting
+        while(!Helper::startsWith($info["rhyme"])){
+            $info["rhyme"] = $rhyme->getRhymes($word);
+        }
+
+        $info["synonym"] = $synonym->getSynonyms($word);
+        $table->setWordInfo($info);
+        return $info;
     }
 }
