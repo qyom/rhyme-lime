@@ -11,6 +11,10 @@ function getCurrWord(point){
     //alert(point);
     var start = point;
     var end   = point;
+    console.log(str_value.charAt(start));
+    if(str_value.charAt(start) == ' ' || str_value.charAt(start) == ''){
+        start = start - 2;
+    }
     while(str_value.charAt(start) != ' ' && start){
         start--;
     }
