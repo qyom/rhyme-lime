@@ -15,6 +15,7 @@
     <link type="text/css" rel="stylesheet" href="css/rdio.css">
 </head>
 <body>
+    <div id="apiswf"></div>
     <div class="header-block">
         <h1 class="header">
             <a href="/" title="rhymeline.net"><img src="images/logo.png" alt="" title="rhymeline.net"></a>
@@ -28,8 +29,7 @@
                 <div class="editor-content">
                     <div class="content">
                        <textarea id="notepad" style="padding-left: 97px; padding-top: 5px; width: 435px; height: 576px;">
-RhymeLine
-                           Only God can judge me, is that right? lonly
+                        Only God can judge me, is that right?
                         [synth voice] Only God can judge me now
                         Only God baby, nobody else, nobody else
                         All you other motherfuckers get out my business
@@ -85,17 +85,52 @@ RhymeLine
             </div>
         </div>
         <div class="right-block right">
-            <div class="sugestion-header"><span class="main-word">RhymeLine</span>this are our sugestions</div>
+            <div class="sugestion-header"><span class="main-word">trufel</span>this is ouer sugestions</div>
             <div class="sugestion">
-
+                <div class="green line">
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                </div>
+                <div class="blue line">
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                </div>
+                <div class="orange line">
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                </div>
+                <div class="red line">
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                </div>
+                <div class="gray line">
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                    <span>shoffel</span><span>slaliliuuuush</span><span>trufelffel</span>
+                    <span>shoffel</span><span>trufelffel</span><span>slaliliuuuush</span>
+                </div>
             </div>
         </div>
         <div id="rdio">
-            <div class="navigation prev"></div>
-            <div class="navigation pause"></div>
-            <div class="navigation play"></div>
-            <div class="navigation next"></div>
-            <div class="info">Play this track</div>
+            <div id="previous" class="navigation prev"></div>
+            <div id="pause" class="navigation pause"></div>
+            <div id="play" class="navigation play"></div>
+            <div id="next" class="navigation next"></div>
+            <div id="info-container"><div class="info"></div></div>
         </div>
     </div>
 
@@ -108,5 +143,7 @@ RhymeLine
 
 <script type="text/javascript" src="js/lib/jquery.rdio.min.js"></script>
 <script type="text/javascript" src="js/rdio.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
 </body>
 </html>

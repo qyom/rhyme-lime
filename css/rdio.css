@@ -39,11 +39,17 @@ div#rdio .next {
     left: 265px;
     background: url(/images/rdio/next.png);
 }
-div#rdio .info {
+div#rdio #info-container {
     width: 155px;
     height: 18px;
     position: absolute;
     top: 53px;
     left: 130px;
     color: #FFF;
+
+    overflow: hidden;
+}
+#info-container .info {
+    width: 1950px;
+    position: absolute;
 }
