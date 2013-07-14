@@ -5,8 +5,8 @@
  * Time: 7:01 AM
  * To change this template use File | Settings | File Templates.
  */
-
-$(document).ready(function()
-{
-//    alert("hoola");
+$(document).ready(function() {
+    $("#notepad").highlightTextarea({
+        words: ["God"]
+    });
 });
