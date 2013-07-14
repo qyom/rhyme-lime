@@ -11,14 +11,12 @@ require_once("./abstract/Rhymer_Abstract.php");
 require_once ("./lib/Word_Table.php");
 require_once("./lib/Get_Rhymebrain.php");
 require_once("./lib/Get_Synonyms.php");
+require_once("./lib/Helper.php");
 
-class Rhyme extends Rhymer_Abstract {
+class Rhymer extends Rhymer_Abstract {
 
     function rhyme($word)
     {
-
-//        $word = "stuck";
-
         $table = new Word_Table;
         $rhyme = new Get_Rhymebrain();
         $synonym = new Get_Synonyms();
@@ -27,12 +25,12 @@ class Rhyme extends Rhymer_Abstract {
         // check the cache
         $rhymeJson = $table->getWordInfo($word);
         if(!($rhymeJson === null)){
-            return $rhymeJson;
+            return json_encode(array_merge(array("success" => true), $rhymeJson));
         }
 
         // if absent, get from api
         $info = array();
-        $info["word"] = $word;
+        $info["success"] = true;
         $info["rhyme"] = $rhyme->getRhymes($word);
 
         // while the answer is error , keep requesting
@@ -41,7 +39,8 @@ class Rhyme extends Rhymer_Abstract {
         }
 
         $info["synonym"] = $synonym->getSynonyms($word);
-        $table->setWordInfo($info);
-        return $info;
+        $table->setWordInfo(array_merge(array("word" => $word), $info));
+
+        return json_encode($info);
     }
 }

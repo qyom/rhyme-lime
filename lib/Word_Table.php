@@ -79,7 +79,7 @@ class Word_Table {
      */
     public function getWordInfo($word){
         $query = sprintf(
-            "SELECT * FROM word_list WHERE word = '%s'",
+            "SELECT rhyme, synonym FROM word_list WHERE word = '%s'",
             mysql_real_escape_string($word)
         );
 

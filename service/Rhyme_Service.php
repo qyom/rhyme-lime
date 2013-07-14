@@ -7,11 +7,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-require_once("./module/Rhyme.php");
+require_once("./module/Rhymer.php");
 
 class Rhyme_Service {
 
     public static function getRhyme(){
-        return new Rhyme;
+        return new Rhymer;
     }
 }
