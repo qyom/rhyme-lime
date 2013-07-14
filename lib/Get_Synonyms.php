@@ -6,4 +6,3 @@
             return $this->getResponse(Get_Synonyms::URL.$word."/json");
         }
     }
-?>
