@@ -19,7 +19,7 @@ function getCurrWord(point){
     while(str_value.charAt(start) != ' ' && start>0){
         start--;
     }
-    while(str_value.charAt(end) != ' ' && end <= str_value.length){
+    while(str_value.charAt(end) != ' ' ||  end <= str_value.length){
         end++;
     }
 
@@ -28,8 +28,7 @@ function getCurrWord(point){
     if(!flag){
         start++;
     }
-    console.log("start"+start);
-    console.log("end"+end);
+    console.log(str_value.substring(start,end));
     return str_value.substring(start,end);
 }
 $(document).ready(function() {
