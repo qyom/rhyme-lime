@@ -9,25 +9,24 @@ function getCurrWord(point){
     var str_value = $('#notepad').val();
     //alert(str_value);
     //alert(point);
-    var start = point;
-    var end   = point;
     var flag = false;
     if(str_value.charAt(start) == ' ' || str_value.charAt(start) == ''){
-        start = start - 2;
+        point = point - 2;
         flag = true;
     }
+    var start = point;
+    var end   = point;
     while(str_value.charAt(start) != ' ' && start>0){
         start--;
     }
-    while(str_value.charAt(end) != ' ' ||  end <= str_value.length){
+    while(str_value.charAt(end) != ' ' ||  end < str_value.length){
         end++;
     }
 
     //alert(start +"-"+end );
     //alert(str_value.substring(start,end));
-    if(!flag){
-        start++;
-    }
+
+     start++;
     console.log(str_value.substring(start,end));
     return str_value.substring(start,end);
 }
