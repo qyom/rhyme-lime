@@ -19,8 +19,7 @@ function getCurrWord(point){
     while(str_value.charAt(start) != ' ' && start>0){
         start--;
     }
-
-    while(str_value.charAt(end) != ' ' && end <= str_value.lenght){
+    while(str_value.charAt(end) != ' ' && end <= str_value.length){
         end++;
     }
 
