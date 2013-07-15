@@ -15,12 +15,14 @@ function getCurrWord(point){
     if(str_value.charAt(start) == ' ' || str_value.charAt(start) == ''){
         start = start - 2;
     }
-    while(str_value.charAt(start) != ' ' && start){
+    while(str_value.charAt(start) != ' ' && start>0){
         start--;
     }
-    while(str_value.charAt(end) != ' '){
+
+    while(str_value.charAt(end) != ' ' && end <= str_value.lenght){
         end++;
     }
+
     //alert(start +"-"+end );
     //alert(str_value.substring(start,end));
     start++;
