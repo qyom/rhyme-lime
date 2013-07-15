@@ -57,8 +57,8 @@ class Word_Table {
     public function insertRhyme($word,$str_json){
         $sql = sprintf(
             "INSERT INTO synonyms (word_id,json) VALUES ('%s','%s')",
-            mysql_real_escape_string($word),
-            mysql_real_escape_string($str_json)
+            mysql_escape_string($word),
+            mysql_escape_string($str_json)
         );
         $response = mysqli_query(self::$connection ,$sql) or die (mysqli_error(self::$connection));
     }
@@ -66,8 +66,8 @@ class Word_Table {
     public function insertSynonym($word_id,$str_json){
         $sql = sprintf(
             "INSERT INTO synonyms (word_id,json) VALUES ('%s','%s')",
-            mysql_real_escape_string($word_id),
-            mysql_real_escape_string($str_json)
+            mysql_escape_string($word_id),
+            mysql_escape_string($str_json)
         );
         $response = mysqli_query(self::$connection ,$sql) or die (mysqli_error(self::$connection));
     }
@@ -80,10 +80,10 @@ class Word_Table {
     public function getWordInfo($word){
         $query = sprintf(
             "SELECT rhyme, synonym FROM word_list WHERE word = '%s'",
-            mysql_real_escape_string($word)
+            mysql_escape_string($word)
         );
-
         $response = mysqli_query(self::$connection ,$query) or die (mysqli_error(self::$connection));
+        //var_dump((array)$response);
         return $response->fetch_assoc();
     }
 
@@ -96,9 +96,9 @@ class Word_Table {
     public function setWordInfo($info){
         $sql = sprintf(
             "INSERT INTO word_list (word,rhyme, synonym) VALUES ('%s','%s', '%s')",
-            mysql_real_escape_string($info["word"]),
-            mysql_real_escape_string($info["rhyme"]),
-            mysql_real_escape_string($info["synonym"])
+            mysql_escape_string($info["word"]),
+            mysql_escape_string($info["rhyme"]),
+            mysql_escape_string($info["synonym"])
         );
         $response = mysqli_query(self::$connection ,$sql) or die (mysqli_error(self::$connection));
         echo $response;
@@ -112,7 +112,7 @@ class Word_Table {
     public function getSynonym($word){
         $query = sprintf(
             "SELECT json FROM rhymes WHERE word = '%s'",
-            mysql_real_escape_string($word)
+            mysql_escape_string($word)
         );
 
         $response = mysqli_query(self::$connection ,$query) or die (mysqli_error(self::$connection));
@@ -122,12 +122,13 @@ class Word_Table {
     /**
      * init the connection
      */
-    private function init(){
+    function init(){
         $config = $this->getConfigFile(/*PUBLIC_DIR.*/'./lib/database.json');
 
         // Create connection
         $connection = mysqli_connect($config["host"],$config["username"],$config["password"],$config["dbname"]);
         self::$connection = $connection;
+
     }
 
     public static function getConfigFile($file)
